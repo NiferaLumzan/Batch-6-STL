@@ -1,3 +1,5 @@
+//#include<bits/stdc++.h>
+#include<stdio.h>
 #include<iostream>
 #include<string>
 #include<map>
@@ -5,12 +7,10 @@
 #include<sstream>
 #include<set>
 #include<queue>
-//#define fin freopen("test.TXT","r",stdin)
+#define fin freopen("test.TXT","r",stdin)
 
 using namespace std;
 typedef long long ll;
-
-/* Have fun with matrices */
 
 int option(string s)
 {
@@ -51,9 +51,36 @@ int option(string s)
     }
 }
 
+pair<int, int> ChoiseRowCol(string s)
+{
+    istringstream ss(s);
+    int co = 0, r1,r2;
+    do
+    {
+        if(co == 1)
+        {
+            ss >> r1;
+            co++;
+        }
+        else if (co == 2)
+        {
+            ss >> r2;
+            co++;
+        }
+        else
+        {
+            ss >> s;
+            co++;
+        }
+    }
+    while(ss);
+    return std::make_pair(r1,r2);
+
+}
+
 int main()
 {
-//    fin;
+    fin;
     int T;
     cin >> T;
     for(int t = 1; t <= T; t++)
@@ -81,13 +108,6 @@ int main()
             }
         }
 
-//        for(int i = 0; i< rowCol; i++)
-//        {
-//            for(int j = 0; j<rowCol; j++)
-//                cout << mat[i][j];
-//        }
-
-
         int op;
         cin >> op;
         cin.ignore(); // for getline() to work perfectly
@@ -99,11 +119,6 @@ int main()
 //            cout << s << endl;
             choise.push_back(s);
         }
-//        cout << choise.size();
-        for(int i = 0; i< choise.size(); i++)
-        {
-//            cout << choise.at(i) << endl;
-        }
 
         for(int i = 0; i< choise.size(); i++)
         {
@@ -114,30 +129,9 @@ int main()
 
             if(op == 1) //row a b
             {
-                string s = choise.at(i);
-                istringstream ss(s);
-                int co = 0, r1,r2;
-                do
-                {
-                    if(co == 1)
-                    {
-                        ss >> r1;
-//                        cout << r1;
-                        co++;
-                    }
-                    else if (co == 2)
-                    {
-                        ss >> r2;
-//                        cout << r2;
-                        co++;
-                    }
-                    else
-                    {
-                        ss >> s;
-                        co++;
-                    }
-                }
-                while(ss);
+                pair<int,int> p = ChoiseRowCol(choise.at(i));
+                int r1 = p.first;
+                int r2 = p.second;
 
                 for(int j = 0; j<rowCol; j++)
                 {
@@ -148,30 +142,9 @@ int main()
             }
             else if(op == 2) // col a b
             {
-                string s = choise.at(i);
-                istringstream ss(s);
-                int co = 0, r1,r2;
-                do
-                {
-                    if(co == 1)
-                    {
-                        ss >> r1;
-//                        cout << r1;
-                        co++;
-                    }
-                    else if (co == 2)
-                    {
-                        ss >> r2;
-//                        cout << r2;
-                        co++;
-                    }
-                    else
-                    {
-                        ss >> s;
-                        co++;
-                    }
-                }
-                while(ss);
+                pair<int,int> p = ChoiseRowCol(choise.at(i));
+                int r1 = p.first;
+                int r2 = p.second;
 
                 for(int j = 0; j<rowCol; j++)
                 {
