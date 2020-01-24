@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<iostream>
+#include<string>
+#include<map>
+#include<algorithm>
+#include<sstream>
+#include<set>
+#include<queue>
+#define fin freopen("test.TXT","r",stdin)
+
+using namespace std;
+typedef long long ll;
+
+int main()
+{
+    fin;
+    int T;
+    cin >> T;
+    map<string, int> m;
+    int choise, marks;
+    string name;
+    while(T--)
+    {
+        cin>> choise;
+        if(choise == 1)
+        {
+            cin>> name;
+            cin>> marks;
+            if(m[name] > 0)
+                m[name] += marks;
+            else
+                m[name] = marks;
+        }
+        else if(choise == 2)
+        {
+            cin>> name;
+            int k = m.count(name);
+            if(k > 0){
+                m.erase(name);
+            }
+        }
+        else if(choise == 3)
+        {
+            cin>> name;
+            int k = m.count(name);
+            if(k > 0){
+                cout << m[name] << endl;
+            }else{
+                cout<< "0" << endl;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+    return 0;
+}
